@@ -724,4 +724,10 @@ app.get('*',async (req,res)=>res.sendFile(path.join(__dirname,'public','index.ht
 const port=Number(process.env.PORT||3000);app.listen(port,'0.0.0.0',()=>console.log(`مجموعة النسيم تعمل محليًا: http://localhost:${port}`));
 
 
-const port=Number(process.env.PORT||3000);app.listen(port,'0.0.0.0',()=>console.log(`مجموعة النسيم تعمل على Turso: http://localhost:${port}`));
+
+const port=Number(process.env.PORT||3000);
+if (require.main === module) {
+  app.listen(port,'0.0.0.0',()=>console.log(`مجموعة النسيم تعمل على Turso: http://localhost:${port}`));
+}
+module.exports = app;
+
